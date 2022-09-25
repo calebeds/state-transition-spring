@@ -20,9 +20,9 @@ public class ProductService {
     }
 
     @Transactional
-    public void decrementStock(Product p) {
+    public void decrementStock(int id) {
+        Product p = entityManager.find(Product.class, id);
         p.setStock(p.getStock() - 1);
-        entityManager.merge(p);//It will update only because this p has the same id
     }
 
     @Transactional

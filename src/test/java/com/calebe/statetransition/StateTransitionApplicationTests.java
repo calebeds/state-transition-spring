@@ -19,8 +19,7 @@ class StateTransitionApplicationTests {
 	@Test
 	void testUpdateMerging() {
 		LOGGER.info("Decrementing the stock value");
-		Product product = productService.find(1);
-		productService.decrementStock(product);
+		productService.decrementStock(1);
 		LOGGER.info("Loading product again");
 		Product productAgain = productService.find(1);
 		LOGGER.info("Product stock is " + productAgain.getStock());
