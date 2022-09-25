@@ -22,11 +22,12 @@ public class ProductService {
     @Transactional
     public void decrementStock(Product p) {
         p.setStock(p.getStock() - 1);
+        entityManager.merge(p);//It will update only because this p has the same id
     }
 
     @Transactional
     public void create(int id, int stock) {
         Product newProduct = new Product(id, stock);
-        entityManager.merge(newProduct);
+        entityManager.merge(newProduct);//Here will create a new row because hibernate will not find a 3 id
     }
 }
